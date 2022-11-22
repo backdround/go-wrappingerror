@@ -8,7 +8,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-
 func TestWrappedErrorMessage(t *testing.T) {
 	t.Run("Without wrapped error", func(t *testing.T) {
 		message := "Wrapping error"
@@ -60,4 +59,3 @@ func TestWrappingErrorIs(t *testing.T) {
 			"they are the different error. Must be false!")
 	})
 }
-

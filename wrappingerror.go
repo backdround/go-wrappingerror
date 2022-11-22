@@ -1,4 +1,5 @@
-// wrappingerror provides error which can wrap another error.
+// wrappingerror provides error that can wrap other error and returns
+// pretty error message.
 package wrappingerror
 
 import "sync"
@@ -9,7 +10,7 @@ import "sync"
 // wrappingErrorIdCounter provides new id by request
 type wrappingErrorIdCounter struct {
 	currentId int
-	mutex sync.Mutex
+	mutex     sync.Mutex
 }
 
 func (idCounter *wrappingErrorIdCounter) getId() int {
@@ -22,11 +23,10 @@ func (idCounter *wrappingErrorIdCounter) getId() int {
 
 var idCounter = wrappingErrorIdCounter{
 	currentId: 0,
-	mutex: sync.Mutex{},
+	mutex:     sync.Mutex{},
 }
 
-
-////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////
 // wrappingError
 type wrappingError struct {
 	message       string
@@ -37,9 +37,9 @@ type wrappingError struct {
 // NewWrappingError creates new error with `message` value
 func NewWrappingError(message string) wrappingError {
 	return wrappingError{
-		message: message,
+		message:       message,
 		internalError: nil,
-		id: idCounter.getId(),
+		id:            idCounter.getId(),
 	}
 }
 
